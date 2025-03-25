@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "734412678205",
+    "project_id": "bell-system-621ae",
+    "storage_bucket": "bell-system-621ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734412678205:android:d47279e9ac816ae22ef654",
+        "android_client_info": {
+          "package_name": "com.example.school_bell_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXk_LxdXeYojxUpvhCKk1n4QftfMXLcoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
