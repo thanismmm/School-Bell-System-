@@ -168,7 +168,7 @@ class _ScheduleUpdateState extends State<ScheduleUpdate> {
               ),
               Divider(),
               ListTile(
-                title: Text('Start Time', style: TextStyle(fontSize: 18)),
+                title: Text('Starts Time', style: TextStyle(fontSize: 18)),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
