@@ -6,7 +6,9 @@ class Mytextfield extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
+  final TextInputType? keyboardType;
   final Widget? suffixIcon;
+
 
   const Mytextfield({
     super.key,
@@ -14,6 +16,7 @@ class Mytextfield extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
+    this.keyboardType, required String? Function(dynamic value) validator,
 
     });
 
@@ -32,7 +35,7 @@ class Mytextfield extends StatelessWidget {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.shade400)
                 ),
-
+            
                 fillColor: Colors.grey.shade100,
                 filled: true,
                 hintText: hintText,

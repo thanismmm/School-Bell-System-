@@ -1,21 +1,22 @@
 {
   "project_info": {
-    "project_number": "734412678205",
-    "project_id": "bell-system-621ae",
-    "storage_bucket": "bell-system-621ae.firebasestorage.app"
+    "project_number": "540039261850",
+    "firebase_url": "https://schoolbell-1145-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "schoolbell-1145",
+    "storage_bucket": "schoolbell-1145.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734412678205:android:d47279e9ac816ae22ef654",
+        "mobilesdk_app_id": "1:540039261850:android:6d855dc003336d22c9b923",
         "android_client_info": {
-          "package_name": "com.example.school_bell_system"
+          "package_name": "com.softxpertz.schoolbell"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAXk_LxdXeYojxUpvhCKk1n4QftfMXLcoM"
+          "current_key": "AIzaSyBZc24kMMnjmseB16AkERUJyri2qjkgm8o"
         }
       ],
       "services": {
