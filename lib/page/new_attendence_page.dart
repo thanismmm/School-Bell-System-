@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:school_bell_system/components/system_cart.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+// import 'package:school_bell_system/components/system_cart.dart';
+// import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:intl/intl.dart';
 
 class AttendanceSystem extends StatelessWidget {
@@ -20,36 +20,36 @@ class AttendanceSystem extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 16),
-          SystemCard(
-            title: 'Student Attendance',
-            description: 'Track daily attendance and generate reports for students',
-            icon: Icons.assignment_ind,
-            iconColor: Colors.green,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const StudentAttendancePage(),
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 16),
-          SystemCard(
-            title: 'QR Code Scanner',
-            description: 'Scan student QR codes to mark attendance',
-            icon: Icons.qr_code_scanner,
-            iconColor: Colors.blue,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const QRScannerPage(),
-                ),
-              );
-            },
-          ),
+          // const SizedBox(height: 16),
+          // SystemCard(
+          //   title: 'Student Attendance',
+          //   description: 'Track daily attendance and generate reports for students',
+          //   icon: Icons.assignment_ind,
+          //   iconColor: Colors.green,
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const StudentAttendancePage(),
+          //       ),
+          //     );
+          //   },
+          // ),
+          // const SizedBox(height: 16),
+          // SystemCard(
+          //   title: 'QR Code Scanner',
+          //   description: 'Scan student QR codes to mark attendance',
+          //   icon: Icons.qr_code_scanner,
+          //   iconColor: Colors.blue,
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const QRScannerPage(),
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
@@ -245,104 +245,104 @@ class _StudentAttendancePageState extends State<StudentAttendancePage> {
   }
 }
 
-class QRScannerPage extends StatefulWidget {
-  const QRScannerPage({super.key});
+// class QRScannerPage extends StatefulWidget {
+//   const QRScannerPage({super.key});
 
-  @override
-  State<QRScannerPage> createState() => _QRScannerPageState();
-}
+//   @override
+//   State<QRScannerPage> createState() => _QRScannerPageState();
+// }
 
-class _QRScannerPageState extends State<QRScannerPage> {
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-  String result = 'Scan a QR code';
-  bool isScanning = true;
+// class _QRScannerPageState extends State<QRScannerPage> {
+//   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+//   QRViewController? controller;
+//   String result = 'Scan a QR code';
+//   bool isScanning = true;
 
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
+//   @override
+//   void dispose() {
+//     controller?.dispose();
+//     super.dispose();
+//   }
 
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData.code ?? 'No data found';
-        isScanning = false;
-      });
+//   void _onQRViewCreated(QRViewController controller) {
+//     this.controller = controller;
+//     controller.scannedDataStream.listen((scanData) {
+//       setState(() {
+//         result = scanData.code ?? 'No data found';
+//         isScanning = false;
+//       });
       
-      // Show dialog with scanned result
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Scan Result'),
-            content: Text(result),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  setState(() {
-                    isScanning = true;
-                    result = 'Scan a QR code';
-                  });
-                  controller.resumeCamera();
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      });
-    });
-  }
+//       // Show dialog with scanned result
+//       WidgetsBinding.instance.addPostFrameCallback((_) {
+//         showDialog(
+//           context: context,
+//           builder: (context) => AlertDialog(
+//             title: const Text('Scan Result'),
+//             content: Text(result),
+//             actions: [
+//               TextButton(
+//                 onPressed: () {
+//                   Navigator.pop(context);
+//                   setState(() {
+//                     isScanning = true;
+//                     result = 'Scan a QR code';
+//                   });
+//                   controller.resumeCamera();
+//                 },
+//                 child: const Text('OK'),
+//               ),
+//             ],
+//           ),
+//         );
+//       });
+//     });
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('QR Code Scanner'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-              overlay: QrScannerOverlayShape(
-                borderColor: Colors.blue,
-                borderRadius: 10,
-                borderLength: 30,
-                borderWidth: 10,
-                cutOutSize: MediaQuery.of(context).size.width * 0.8,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: Text(
-                result,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (controller != null) {
-            controller?.resumeCamera();
-            setState(() {
-              isScanning = true;
-              result = 'Scan a QR code';
-            });
-          }
-        },
-        child: const Icon(Icons.refresh),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('QR Code Scanner'),
+//       ),
+//       body: Column(
+//         children: [
+//           Expanded(
+//             flex: 5,
+//             child: QRView(
+//               key: qrKey,
+//               onQRViewCreated: _onQRViewCreated,
+//               overlay: QrScannerOverlayShape(
+//                 borderColor: Colors.blue,
+//                 borderRadius: 10,
+//                 borderLength: 30,
+//                 borderWidth: 10,
+//                 cutOutSize: MediaQuery.of(context).size.width * 0.8,
+//               ),
+//             ),
+//           ),
+//           Expanded(
+//             flex: 1,
+//             child: Center(
+//               child: Text(
+//                 result,
+//                 style: const TextStyle(fontSize: 18),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () {
+//           if (controller != null) {
+//             controller?.resumeCamera();
+//             setState(() {
+//               isScanning = true;
+//               result = 'Scan a QR code';
+//             });
+//           }
+//         },
+//         child: const Icon(Icons.refresh),
+//       ),
+//     );
+//   }
+// }
